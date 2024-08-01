@@ -208,7 +208,7 @@ const Game = () => {
   return (
     <div className="App">
       <div className="background"></div>
-      <header className="App-header">
+      <div className="App-header">
         <h1>Vegetabledle</h1>
         <p>Guess today's vegetable.</p>
         <div className="input-container">
@@ -291,7 +291,7 @@ const Game = () => {
             </div>
           ))}
         </div>
-      </header>
+      </div>
       <div className="credit">
         Background image credit: <a href="https://wall.alphacoders.com/big.php?i=1284104" target="_blank" rel="noopener noreferrer">Alpha Coders</a>
       </div>

@@ -5,9 +5,7 @@ import Game from './Game';
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <Game />
-      </header>
+      <Game />
     </div>
   );
 };
