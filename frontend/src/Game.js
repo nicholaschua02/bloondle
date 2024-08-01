@@ -14,8 +14,9 @@ const Game = () => {
   const [selectedVegetable, setSelectedVegetable] = useState('');
   const [guesses, setGuesses] = useState([]);
   const [message, setMessage] = useState('');
+  const [correctVegetable, setCorrectVegetable] = useState('');
   const [gameWon, setGameWon] = useState(false);
-  const [giveUpActive, setGiveUpActive] = useState(false);
+  const [giveUpActive, setGiveUpActive] = useState(false);  
 
   const inputRef = useRef(null);
   const giveUpRef = useRef(null);
@@ -34,7 +35,7 @@ const Game = () => {
   const seasons = ["Winter", "Spring", "Summer", "Autumn"];
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/daily-vegetable')
+    axios.get('https://vegetabledle-c0197ab79c78.herokuapp.com/api/daily-vegetable')
       .then(response => {
         setDailyVegetable(response.data);
       })
@@ -42,7 +43,7 @@ const Game = () => {
         console.error('Error fetching the daily vegetable:', error);
       });
 
-    axios.get('http://localhost:3001/api/vegetables')
+    axios.get('https://vegetabledle-c0197ab79c78.herokuapp.com/api/vegetables')
       .then(response => {
         setVegetables(response.data);
         setFilteredVegetables(response.data);  // Initialize filteredVegetables with all vegetables
@@ -153,7 +154,8 @@ const Game = () => {
       setGameWon(true);
       confetti();  // Trigger confetti animation
     } else if (updatedGuesses.length >= MAX_GUESSES) {
-      setMessage(`You've run out of guesses! The correct vegetable was ${dailyVegetable.name}.`);
+      setMessage(`You've run out of guesses! The correct vegetable was`);
+      setCorrectVegetable(`${dailyVegetable.name}`);
       setGameWon(true);
     } else {
       setVegetableInput('');
@@ -205,9 +207,10 @@ const Game = () => {
 
   return (
     <div className="App">
+      <div className="background"></div>
       <header className="App-header">
-        <h1>Welcome to Vegetabledle!</h1>
-        <p>Guess the vegetable for today's vegetable.</p>
+        <h1>Vegetabledle</h1>
+        <p>Guess today's vegetable.</p>
         <div className="input-container">
           <label>
             Guess here: <input 
@@ -247,7 +250,7 @@ const Game = () => {
           Give Up (Hold)
           <div className="progress-bar" ref={giveUpRef}></div>
         </button>
-        <p>{message}</p>
+        <p>{message} <strong>{correctVegetable}</strong></p>
         <div className="grid-container">
           <div className="grid-row grid-header">
             <div className="grid-item">Name</div>
@@ -289,6 +292,9 @@ const Game = () => {
           ))}
         </div>
       </header>
+      <div className="credit">
+        Background image credit: <a href="https://wall.alphacoders.com/big.php?i=1284104" target="_blank" rel="noopener noreferrer">Alpha Coders</a>
+      </div>
     </div>
   );
 };
