@@ -23,13 +23,13 @@ const Game = () => {
   const giveUpTimeout = useRef(null);
 
   const continents = {
-    "Africa": ["North Africa"],
-    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan"],
-    "Europe": ["Italy", "Europe", "Mediterranean", "Greece"],
-    "North America": ["Central America", "North America", "Mexico"],
-    "South America": ["South America", "Peru"],
+    "Africa": ["North Africa", "Africa"],
+    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia"],
+    "Europe": ["Italy", "Europe", "Mediterranean", "Greece", "Europe"],
+    "North America": ["Central America", "North America", "Mexico", "North America"],
+    "South America": ["South America", "Peru", "South America"],
     "Australia": ["Australia"],
-    "Antarctica": []
+    "Antarctica": ["Antarctica"]
   };
 
   const seasons = ["Winter", "Spring", "Summer", "Autumn"];
