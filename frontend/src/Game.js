@@ -115,7 +115,7 @@ const Game = () => {
       name: guessedVegetable.name,
       family: guessedVegetable.family,
       origin: guessedVegetable.origin,
-      calories_per_100g: guessedVegetable.calories_per_100g,
+      weight: guessedVegetable.weight,
       shape: guessedVegetable.shape,
       texture: guessedVegetable.texture,
       taste: guessedVegetable.taste,
@@ -130,9 +130,9 @@ const Game = () => {
           : isWithinSameContinent(guessedVegetable.origin, dailyVegetable.origin)
           ? "partial"
           : false,
-        calories_per_100g: guessedVegetable.calories_per_100g === dailyVegetable.calories_per_100g 
+        weight: guessedVegetable.weight === dailyVegetable.weight 
           ? true 
-          : Math.abs(guessedVegetable.calories_per_100g - dailyVegetable.calories_per_100g) <= 10 
+          : Math.abs(guessedVegetable.weight - dailyVegetable.weight) <= 10 
           ? "partial" 
           : false,
         shape: guessedVegetable.shape === dailyVegetable.shape,
@@ -155,7 +155,7 @@ const Game = () => {
       confetti();  // Trigger confetti animation
     } else if (updatedGuesses.length >= MAX_GUESSES) {
       setMessage(`You've run out of guesses! The correct vegetable was`);
-      setCorrectVegetable(`${dailyVegetable.name}`);
+      setCorrectVegetable(` ${dailyVegetable.name}`);
       setGameWon(true);
     } else {
       setVegetableInput('');
@@ -250,13 +250,13 @@ const Game = () => {
           Give Up (Hold)
           <div className="progress-bar" ref={giveUpRef}></div>
         </button>
-        <p>{message} <strong>{correctVegetable}</strong></p>
+        <p>{message}<strong>{correctVegetable}</strong></p>
         <div className="grid-container">
           <div className="grid-row grid-header">
             <div className="grid-item">Name</div>
             <div className="grid-item">Family</div>
             <div className="grid-item">Origin</div>
-            <div className="grid-item">Calories/100g</div>
+            <div className="grid-item">Weight (g)</div>
             <div className="grid-item">Shape</div>
             <div className="grid-item">Texture</div>
             <div className="grid-item">Taste</div>
@@ -273,8 +273,8 @@ const Game = () => {
               <div className={`grid-item ${g.correct.origin === true ? 'correct' : g.correct.origin === "partial" ? 'partial' : 'incorrect'}`}>
                 {g.origin}
               </div>
-              <div className={`grid-item ${g.correct.calories_per_100g === true ? 'correct' : g.correct.calories_per_100g === "partial" ? 'partial' : 'incorrect'}`}>
-                {g.calories_per_100g}{g.correct.calories_per_100g !== true && !g.correct.calories_per_100g && renderArrowNum(g.calories_per_100g, dailyVegetable.calories_per_100g)}
+              <div className={`grid-item ${g.correct.weight === true ? 'correct' : g.correct.weight === "partial" ? 'partial' : 'incorrect'}`}>
+                {g.weight}{g.correct.weight !== true && !g.correct.weight && renderArrowNum(g.weight, dailyVegetable.weight)}
               </div>
               <div className={`grid-item ${g.correct.shape ? 'correct' : 'incorrect'}`}>
                 {g.shape}

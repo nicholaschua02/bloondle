@@ -1,63 +1,63 @@
-name,family,origin,calories_per_100g,shape,texture,taste,season
-Artichoke,Asteraceae,North Africa,47,Round,Soft,Earthy,Spring
-Arugula,Brassicaceae,Mediterranean,25,Leafy,Tender,Peppery,Spring
-Asparagus,Asparagaceae,Europe,20,Elongated,Crunchy,Bitter,Spring
-Bamboo Shoot,Poaceae,Asia,27,Elongated,Crispy,Mild,Spring
-Beetroot,Amaranthaceae,North Africa,43,Round,Crunchy,Earthy,Autumn
-Bell Pepper,Solanaceae,Central America,20,Bulbous,Crunchy,Sweet,Summer
-Bitter Melon,Cucurbitaceae,India,17,Elongated,Spongy,Bitter,Summer
-Bok Choy,Brassicaceae,China,13,Leafy,Crispy,Mild,Winter
-Broccoli,Brassicaceae,Italy,34,Flower,Crispy,Slightly bitter,Winter
-Brussels Sprouts,Brassicaceae,Europe,43,Round,Crunchy,Bitter,Winter
-Cabbage,Brassicaceae,Europe,25,Leafy,Crunchy,Sweet,Winter
-Carrot,Apiaceae,Persia,41,Elongated,Crunchy,Sweet,Winter
-Cauliflower,Brassicaceae,Europe,25,Flower,Crispy,Mild,Autumn
-Celery,Apiaceae,Mediterranean,16,Elongated,Crispy,Mild,Spring
-Chayote,Cucurbitaceae,Mesoamerica,19,Ovoid,Crispy,Slightly sweet,Summer
-Chicory,Asteraceae,Europe,23,Leafy,Crispy,Bitter,Winter
-Collard Greens,Brassicaceae,Europe,32,Leafy,Tough,Earthy,Winter
-Corn,Poaceae,Central America,86,Kernels,Crispy,Sweet,Summer
-Cucumber,Cucurbitaceae,India,16,Elongated,Crispy,Mild,Summer
-Daikon,Brassicaceae,East Asia,18,Elongated,Crunchy,Mild,Winter
-Eggplant,Solanaceae,India,25,Ovoid,Spongy,Slightly bitter,Summer
-Endive,Asteraceae,Mediterranean,17,Leafy,Crispy,Bitter,Winter
-Fennel,Apiaceae,Mediterranean,31,Bulbous,Crispy,Aniseed,Winter
-Garlic,Amaryllidaceae,Central Asia,149,Bulbous,Crunchy,Pungent,Autumn
-Ginger,Zingiberaceae,Southeast Asia,80,Root,Fibrous,Spicy,Autumn
-Green Beans,Fabaceae,South America,31,Elongated,Crispy,Sweet,Summer
-Horseradish,Brassicaceae,Europe,48,Root,Crunchy,Pungent,Autumn
-Jerusalem Artichoke,Asteraceae,North America,73,Knobby,Crispy,Sweet,Winter
-Jicama,Fabaceae,Mexico,38,Root,Crispy,Sweet,Summer
-Kale,Brassicaceae,Mediterranean,35,Leafy,Tough,Bitter,Winter
-Kohlrabi,Brassicaceae,Europe,27,Bulbous,Crunchy,Mild,Autumn
-Leek,Amaryllidaceae,Mediterranean,61,Elongated,Crunchy,Mild,Winter
-Lettuce,Asteraceae,Europe,15,Leafy,Crispy,Mild,Summer
-Malabar Spinach,Basellaceae,India,19,Leafy,Slimy,Slightly sweet,Summer
-Moringa,Moringaceae,India,64,Leafy,Tender,Spicy,Summer
-Mushroom,Agaricaceae,Global,22,Umbrella,Crispy,Earthy,Autumn
-Mustard Greens,Brassicaceae,India,27,Leafy,Tender,Pungent,Winter
-Napa Cabbage,Brassicaceae,China,12,Leafy,Crispy,Mild,Winter
-Okra,Malvaceae,Africa,33,Elongated,Slimy,Mild,Summer
-Onion,Amaryllidaceae,Asia,40,Bulbous,Crispy,Pungent,Autumn
-Parsnip,Apiaceae,Europe,75,Root,Crispy,Sweet,Winter
-Peas,Fabaceae,Mediterranean,81,Spherical,Crispy,Sweet,Summer
-Potato,Solanaceae,Peru,77,Round,Starchy,Mild,Autumn
-Pumpkin,Cucurbitaceae,North America,26,Spherical,Crispy,Sweet,Autumn
-Radicchio,Asteraceae,Italy,23,Leafy,Crispy,Bitter,Winter
-Radish,Brassicaceae,Southeast Asia,16,Round,Crunchy,Peppery,Spring
-Rutabaga,Brassicaceae,Sweden,37,Round,Crispy,Sweet,Winter
-Salsify,Asteraceae,Europe,82,Root,Crispy,Sweet,Autumn
-Scallion,Amaryllidaceae,Asia,32,Elongated,Crispy,Pungent,Spring
-Shallot,Amaryllidaceae,Asia,72,Bulbous,Crispy,Sweet,Autumn
-Snow Peas,Fabaceae,China,42,Elongated,Crispy,Sweet,Spring
-Spinach,Amaranthaceae,Persia,23,Leafy,Tender,Mild,Spring
-Squash,Cucurbitaceae,Central America,45,Ovoid,Crispy,Sweet,Summer
-Sweet Potato,Convolvulaceae,Central America,86,Elongated,Starchy,Sweet,Autumn
-Swiss Chard,Amaranthaceae,Europe,19,Leafy,Tender,Earthy,Winter
-Taro,Araceae,Asia,142,Round,Starchy,Sweet,Autumn
-Tomato,Solanaceae,South America,18,Round,Juicy,Sweet,Summer
-Turnip,Brassicaceae,Europe,28,Round,Crispy,Slightly bitter,Winter
-Water Chestnut,Cyperaceae,Asia,97,Round,Crispy,Sweet,Autumn
-Watercress,Brassicaceae,Europe,11,Leafy,Tender,Peppery,Spring
-Yam,Dioscoreaceae,Africa,118,Elongated,Starchy,Sweet,Autumn
-Zucchini,Cucurbitaceae,Central America,17,Elongated,Tender,Mild,Summer
+name,family,origin,weight,shape,texture,taste,season
+Artichoke,Asteraceae,North Africa,130,Round,Soft,Earthy,Spring
+Arugula,Brassicaceae,Mediterranean,20,Leafy,Tender,Peppery,Spring
+Asparagus,Asparagaceae,Europe,25,Elongated,Crunchy,Bitter,Spring
+Bamboo Shoot,Poaceae,Asia,150,Elongated,Crispy,Mild,Spring
+Beetroot,Amaranthaceae,North Africa,250,Round,Crunchy,Earthy,Autumn
+Bell Pepper,Solanaceae,Central America,150,Bulbous,Crunchy,Sweet,Summer
+Bitter Melon,Cucurbitaceae,India,100,Elongated,Spongy,Bitter,Summer
+Bok Choy,Brassicaceae,China,200,Leafy,Crispy,Mild,Winter
+Broccoli,Brassicaceae,Italy,300,Flower,Crispy,Slightly bitter,Winter
+Brussels Sprouts,Brassicaceae,Europe,10,Round,Crunchy,Bitter,Winter
+Cabbage,Brassicaceae,Europe,900,Leafy,Crunchy,Sweet,Winter
+Carrot,Apiaceae,Persia,70,Elongated,Crunchy,Sweet,Winter
+Cauliflower,Brassicaceae,Europe,500,Flower,Crispy,Mild,Autumn
+Celery,Apiaceae,Mediterranean,400,Elongated,Crispy,Mild,Spring
+Chayote,Cucurbitaceae,Mesoamerica,250,Ovoid,Crispy,Slightly sweet,Summer
+Chicory,Asteraceae,Europe,150,Leafy,Crispy,Bitter,Winter
+Collard Greens,Brassicaceae,Europe,300,Leafy,Tough,Earthy,Winter
+Corn,Poaceae,Central America,200,Kernels,Crispy,Sweet,Summer
+Cucumber,Cucurbitaceae,India,300,Elongated,Crispy,Mild,Summer
+Daikon,Brassicaceae,East Asia,800,Elongated,Crunchy,Mild,Winter
+Eggplant,Solanaceae,India,250,Ovoid,Spongy,Slightly bitter,Summer
+Endive,Asteraceae,Mediterranean,150,Leafy,Crispy,Bitter,Winter
+Fennel,Apiaceae,Mediterranean,230,Bulbous,Crispy,Aniseed,Winter
+Garlic,Amaryllidaceae,Central Asia,15,Bulbous,Crunchy,Pungent,Autumn
+Ginger,Zingiberaceae,Southeast Asia,50,Root,Fibrous,Spicy,Autumn
+Green Beans,Fabaceae,South America,5,Elongated,Crispy,Sweet,Summer
+Horseradish,Brassicaceae,Europe,150,Root,Crunchy,Pungent,Autumn
+Jerusalem Artichoke,Asteraceae,North America,100,Knobby,Crispy,Sweet,Winter
+Jicama,Fabaceae,Mexico,300,Root,Crispy,Sweet,Summer
+Kale,Brassicaceae,Mediterranean,50,Leafy,Tough,Bitter,Winter
+Kohlrabi,Brassicaceae,Europe,300,Bulbous,Crunchy,Mild,Autumn
+Leek,Amaryllidaceae,Mediterranean,150,Elongated,Crunchy,Mild,Winter
+Lettuce,Asteraceae,Europe,500,Leafy,Crispy,Mild,Summer
+Malabar Spinach,Basellaceae,India,50,Leafy,Slimy,Slightly sweet,Summer
+Moringa,Moringaceae,India,20,Leafy,Tender,Spicy,Summer
+Mushroom,Agaricaceae,Global,30,Umbrella,Crispy,Earthy,Autumn
+Mustard Greens,Brassicaceae,India,50,Leafy,Tender,Pungent,Winter
+Napa Cabbage,Brassicaceae,China,1000,Leafy,Crispy,Mild,Winter
+Okra,Malvaceae,Africa,15,Elongated,Slimy,Mild,Summer
+Onion,Amaryllidaceae,Asia,100,Bulbous,Crispy,Pungent,Autumn
+Parsnip,Apiaceae,Europe,150,Root,Crispy,Sweet,Winter
+Peas,Fabaceae,Mediterranean,5,Spherical,Crispy,Sweet,Summer
+Potato,Solanaceae,Peru,150,Round,Starchy,Mild,Autumn
+Pumpkin,Cucurbitaceae,North America,3000,Spherical,Crispy,Sweet,Autumn
+Radicchio,Asteraceae,Italy,250,Leafy,Crispy,Bitter,Winter
+Radish,Brassicaceae,Southeast Asia,30,Round,Crunchy,Peppery,Spring
+Rutabaga,Brassicaceae,Sweden,500,Round,Crispy,Sweet,Winter
+Salsify,Asteraceae,Europe,200,Root,Crispy,Sweet,Autumn
+Scallion,Amaryllidaceae,Asia,50,Elongated,Crispy,Pungent,Spring
+Shallot,Amaryllidaceae,Asia,50,Bulbous,Crispy,Sweet,Autumn
+Snow Peas,Fabaceae,China,15,Elongated,Crispy,Sweet,Spring
+Spinach,Amaranthaceae,Persia,30,Leafy,Tender,Mild,Spring
+Squash,Cucurbitaceae,Central America,1000,Ovoid,Crispy,Sweet,Summer
+Sweet Potato,Convolvulaceae,Central America,200,Elongated,Starchy,Sweet,Autumn
+Swiss Chard,Amaranthaceae,Europe,300,Leafy,Tender,Earthy,Winter
+Taro,Araceae,Asia,200,Round,Starchy,Sweet,Autumn
+Tomato,Solanaceae,South America,100,Round,Juicy,Sweet,Summer
+Turnip,Brassicaceae,Europe,150,Round,Crispy,Slightly bitter,Winter
+Water Chestnut,Cyperaceae,Asia,25,Round,Crispy,Sweet,Autumn
+Watercress,Brassicaceae,Europe,30,Leafy,Tender,Peppery,Spring
+Yam,Dioscoreaceae,Africa,200,Elongated,Starchy,Sweet,Autumn
+Zucchini,Cucurbitaceae,Central America,200,Elongated,Tender,Mild,Summer
