@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import './App.css';
 import confetti from 'canvas-confetti';
+import './App.css';
 
+const MAX_GUESSES = 6;
 
 const Game = () => {
   const [dailyVegetable, setDailyVegetable] = useState(null);
@@ -14,8 +15,11 @@ const Game = () => {
   const [guesses, setGuesses] = useState([]);
   const [message, setMessage] = useState('');
   const [gameWon, setGameWon] = useState(false);
+  const [giveUpActive, setGiveUpActive] = useState(false);
 
   const inputRef = useRef(null);
+  const giveUpRef = useRef(null);
+  const giveUpTimeout = useRef(null);
 
   const continents = {
     "Africa": ["North Africa"],
@@ -32,7 +36,6 @@ const Game = () => {
   useEffect(() => {
     axios.get('http://localhost:3001/api/daily-vegetable')
       .then(response => {
-        console.log(response.data)
         setDailyVegetable(response.data);
       })
       .catch(error => {
@@ -67,6 +70,11 @@ const Game = () => {
   const handleGuess = () => {
     if (gameWon) {
       setMessage('The game is already won!');
+      return;
+    }
+
+    if (guesses.length >= MAX_GUESSES) {
+      setMessage('You have reached the maximum number of guesses!');
       return;
     }
 
@@ -137,12 +145,16 @@ const Game = () => {
       }
     };
 
-    setGuesses([...guesses, feedback]);
+    const updatedGuesses = [...guesses, feedback];
+    setGuesses(updatedGuesses);
 
     if (feedback.correct.name) {
-      setMessage(`Congratulations! You guessed the correct vegetable in ${guesses.length + 1} guesses!`);
+      setMessage(`Congratulations! You guessed the correct vegetable in ${updatedGuesses.length} guesses!`);
       setGameWon(true);
-      confetti();
+      confetti();  // Trigger confetti animation
+    } else if (updatedGuesses.length >= MAX_GUESSES) {
+      setMessage(`You've run out of guesses! The correct vegetable was ${dailyVegetable.name}.`);
+      setGameWon(true);
     } else {
       setVegetableInput('');
       setSelectedVegetable('');  // Clear the selectedVegetable state
@@ -154,6 +166,23 @@ const Game = () => {
   const handleGiveUp = () => {
     setMessage(`The correct vegetable was ${dailyVegetable.name}. Better luck next time!`);
     setGameWon(true);
+  };
+
+  const startGiveUpTimer = () => {
+    setGiveUpActive(true);
+    giveUpRef.current.style.transition = 'width 1s linear';
+    giveUpRef.current.style.width = '100%';
+    giveUpTimeout.current = setTimeout(() => {
+      handleGiveUp();
+      resetGiveUpButton();
+    }, 1000);
+  };
+
+  const resetGiveUpButton = () => {
+    clearTimeout(giveUpTimeout.current);
+    setGiveUpActive(false);
+    giveUpRef.current.style.transition = 'none';
+    giveUpRef.current.style.width = '0%';
   };
 
   const renderArrowName = (currentValue, targetValue) => {
@@ -206,8 +235,18 @@ const Game = () => {
             )}
           </label>
         </div>
-        <button onClick={handleGuess} disabled={gameWon}>Submit Guess</button>
-        <button onClick={handleGiveUp} disabled={gameWon}>Give Up</button>
+        <p>Guesses left: {MAX_GUESSES - guesses.length}</p>
+        <button className="submit" onClick={handleGuess} disabled={gameWon}>Submit Guess</button>
+        <button 
+          className={`give-up ${giveUpActive ? 'holding' : ''}`} 
+          onMouseDown={startGiveUpTimer} 
+          onMouseUp={resetGiveUpButton} 
+          onMouseLeave={resetGiveUpButton} 
+          disabled={gameWon}
+        >
+          Give Up (Hold)
+          <div className="progress-bar" ref={giveUpRef}></div>
+        </button>
         <p>{message}</p>
         <div className="grid-container">
           <div className="grid-row grid-header">
