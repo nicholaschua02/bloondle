@@ -256,7 +256,7 @@ const Game = () => {
             <div className="grid-item">Name</div>
             <div className="grid-item">Family</div>
             <div className="grid-item">Origin</div>
-            <div className="grid-item">Calories</div>
+            <div className="grid-item">Calories/100g</div>
             <div className="grid-item">Shape</div>
             <div className="grid-item">Texture</div>
             <div className="grid-item">Taste</div>
