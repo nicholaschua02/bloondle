@@ -45,10 +45,10 @@ const Game = () => {
         const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
         const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-        const dailyResponse = await axios.get("http://localhost:3001" + dailyEndpoint);
+        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + dailyEndpoint);
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("http://localhost:3001" + itemsEndpoint);
+        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + itemsEndpoint);
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
