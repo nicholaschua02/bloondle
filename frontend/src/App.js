@@ -1,12 +1,17 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Game from './Game';
+import WelcomePage from './WelcomePage';
+import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <Game />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
+    </Router>
   );
 };
 

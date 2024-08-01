@@ -1,0 +1,72 @@
+name,family,origin,weight,shape,texture,taste,season
+Acerola,Malpighiaceae,Central America,5,Round,Juicy,Sweet,Summer
+Apple,Rosaceae,Central Asia,150,Round,Crispy,Sweet,Autumn
+Apricot,Rosaceae,China,35,Round,Juicy,Sweet,Summer
+Avocado,Lauraceae,Central America,200,Pear-shaped,Creamy,Sweet,Autumn
+Banana,Musaceae,Southeast Asia,120,Elongated,Soft,Sweet,Autumn
+Bilberry,Ericaceae,Europe,0.5,Spherical,Juicy,Sweet,Summer
+Blackberry,Rosaceae,Europe,5,Spherical,Juicy,Sweet,Summer
+Blueberry,Ericaceae,North America,1,Spherical,Juicy,Sweet,Summer
+Breadfruit,Moraceae,South Pacific,2000,Oval,Soft,Sweet,Summer
+Cantaloupe,Cucurbitaceae,Africa,1500,Round,Juicy,Sweet,Summer
+Cherry,Rosaceae,Europe,8,Round,Juicy,Sweet,Summer
+Cherimoya,Annonaceae,South America,300,Heart-shaped,Soft,Sweet,Summer
+Clementine,Rutaceae,Algeria,70,Round,Juicy,Sweet,Winter
+Coconut,Arecaceae,South Asia,1500,Round,Fibrous,Sweet,Summer
+Cranberry,Ericaceae,North America,1,Spherical,Juicy,Sour,Autumn
+Date,Arecaceae,Middle East,7,Oval,Soft,Sweet,Autumn
+Dragonfruit,Cactaceae,Central America,350,Oval,Soft,Sweet,Summer
+Durian,Malvaceae,Southeast Asia,1500,Oval,Soft,Sweet,Summer
+Elderberry,Adoxaceae,Europe,0.3,Spherical,Juicy,Sweet,Autumn
+Feijoa,Myrtaceae,Brazil,50,Oval,Soft,Sweet,Autumn
+Fig,Moraceae,Western Asia,50,Pear-shaped,Soft,Sweet,Summer
+Gooseberry,Grossulariaceae,Europe,4,Spherical,Juicy,Sour,Spring
+Grape,Vitaceae,Middle East,5,Spherical,Juicy,Sweet,Autumn
+Grapefruit,Rutaceae,Barbados,230,Round,Juicy,Sour,Winter
+Guava,Myrtaceae,Central America,250,Oval,Soft,Sweet,Summer
+Hawthorn,Rosaceae,Asia,1,Round,Juicy,Sweet,Autumn
+Honeydew,Cucurbitaceae,West Africa,1800,Round,Juicy,Sweet,Summer
+Jackfruit,Moraceae,South Asia,20000,Oval,Fibrous,Sweet,Summer
+Jujube,Rhamnaceae,China,20,Oval,Crunchy,Sweet,Autumn
+Kiwi,Actinidiaceae,China,75,Oval,Juicy,Sour,Winter
+Kumquat,Rutaceae,China,15,Oval,Juicy,Sour,Winter
+Lemon,Rutaceae,Asia,80,Oval,Juicy,Sour,Winter
+Lime,Rutaceae,Asia,70,Round,Juicy,Sour,Winter
+Longan,Sapindaceae,China,10,Round,Juicy,Sweet,Summer
+Lychee,Sapindaceae,China,10,Round,Juicy,Sweet,Summer
+Mango,Anacardiaceae,South Asia,200,Oval,Juicy,Sweet,Summer
+Mangosteen,Clusiaceae,Indonesia,80,Round,Juicy,Sweet,Summer
+Medlar,Rosaceae,Europe,15,Round,Soft,Sour,Autumn
+Miracle Fruit,Sapotaceae,West Africa,1,Oval,Juicy,Sweet,Summer
+Mulberry,Moraceae,China,1,Spherical,Juicy,Sweet,Summer
+Nance,Malpighiaceae,Central America,5,Round,Juicy,Sweet,Summer
+Nectarine,Rosaceae,China,150,Round,Juicy,Sweet,Summer
+Olive,Oleaceae,Mediterranean,5,Oval,Soft,Bitter,Autumn
+Orange,Rutaceae,China,140,Round,Juicy,Sweet,Winter
+Papaya,Caricaceae,Central America,500,Oval,Soft,Sweet,Summer
+Passionfruit,Passifloraceae,South America,18,Oval,Juicy,Sour,Summer
+Peach,Rosaceae,Northwest China,150,Round,Juicy,Sweet,Summer
+Pear,Rosaceae,Europe,178,Pear-shaped,Juicy,Sweet,Autumn
+Persimmon,Ebenaceae,China,168,Round,Soft,Sweet,Autumn
+Pineapple,Bromeliaceae,South America,1000,Oval,Juicy,Sweet,Spring
+Pitanga,Myrtaceae,Brazil,4,Round,Juicy,Sweet,Summer
+Plum,Rosaceae,China,75,Round,Juicy,Sweet,Summer
+Pomelo,Rutaceae,South Asia,1200,Round,Juicy,Sweet,Winter
+Pomegranate,Lythraceae,Iran,280,Round,Juicy,Sour,Autumn
+Prickly Pear,Cactaceae,Americas,150,Oval,Soft,Sweet,Summer
+Quince,Rosaceae,Southwest Asia,92,Pear-shaped,Hard,Sour,Autumn
+Rambutan,Sapindaceae,Malaysia,30,Round,Juicy,Sweet,Summer
+Raspberry,Rosaceae,Europe,4,Spherical,Juicy,Sweet,Summer
+Redcurrant,Grossulariaceae,Europe,0.7,Spherical,Juicy,Sour,Summer
+Salak,Arecaceae,Indonesia,25,Pear-shaped,Crunchy,Sweet,Summer
+Santol,Meliaceae,Southeast Asia,150,Round,Juicy,Sweet,Summer
+Sapodilla,Sapotaceae,Central America,150,Oval,Soft,Sweet,Summer
+Soursop,Annonaceae,Caribbean,600,Heart-shaped,Soft,Sweet,Summer
+Starfruit,Oxalidaceae,Indonesia,91,Star-shaped,Juicy,Sour,Autumn
+Strawberry,Rosaceae,Europe,12,Heart-shaped,Juicy,Sweet,Spring
+Surinam Cherry,Myrtaceae,South America,4,Round,Juicy,Sweet,Summer
+Tamarind,Leguminosae,India,20,Elongated,Sticky,Sweet,Spring
+Tangerine,Rutaceae,China,95,Round,Juicy,Sweet,Winter
+Ugli Fruit,Rutaceae,Jamaica,300,Round,Juicy,Sour,Winter
+Watermelon,Cucurbitaceae,Africa,5000,Oval,Juicy,Sweet,Summer
+Wood Apple,Rutaceae,India,500,Round,Soft,Sweet,Autumn

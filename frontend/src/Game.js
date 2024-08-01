@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import confetti from 'canvas-confetti';
 import './App.css';
@@ -6,15 +7,19 @@ import './App.css';
 const MAX_GUESSES = 6;
 
 const Game = () => {
-  const [dailyVegetable, setDailyVegetable] = useState(null);
-  const [vegetables, setVegetables] = useState([]);
-  const [vegetableInput, setVegetableInput] = useState('');
-  const [filteredVegetables, setFilteredVegetables] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const gameChoice = location.state?.choice;
+
+  const [dailyItem, setDailyItem] = useState(null);
+  const [items, setItems] = useState([]);
+  const [itemInput, setItemInput] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedVegetable, setSelectedVegetable] = useState('');
+  const [selectedItem, setSelectedItem] = useState('');
   const [guesses, setGuesses] = useState([]);
   const [message, setMessage] = useState('');
-  const [correctVegetable, setCorrectVegetable] = useState('');
+  const [correctItem, setCorrectItem] = useState('');
   const [gameWon, setGameWon] = useState(false);
   const [giveUpActive, setGiveUpActive] = useState(false);  
 
@@ -23,48 +28,54 @@ const Game = () => {
   const giveUpTimeout = useRef(null);
 
   const continents = {
-    "Africa": ["North Africa", "Africa"],
-    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia"],
+    "Africa": ["North Africa", "Africa", "West Africa", "South Africa"],
+    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia", "South Asia"],
     "Europe": ["Italy", "Europe", "Mediterranean", "Greece", "Europe"],
     "North America": ["Central America", "North America", "Mexico", "North America"],
     "South America": ["South America", "Peru", "South America"],
     "Australia": ["Australia"],
-    "Antarctica": ["Antarctica"]
+    "Antarctica": ["Antarctica"],
+    "Middle East": ["Middle East"],
+    "Near East": ["Near East"],
+    "Western Asia": ["Western Asia"],
+    "South Pacific": ["South Pacific"],
+    "Caribbean": ["Caribbean"]
   };
 
   const seasons = ["Winter", "Spring", "Summer", "Autumn"];
 
   useEffect(() => {
-    axios.get('https://vegetabledle-c0197ab79c78.herokuapp.com/api/daily-vegetable')
-      .then(response => {
-        setDailyVegetable(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching the daily vegetable:', error);
-      });
+    const fetchData = async () => {
+      try {
+        const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
+        const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-    axios.get('https://vegetabledle-c0197ab79c78.herokuapp.com/api/vegetables')
-      .then(response => {
-        setVegetables(response.data);
-        setFilteredVegetables(response.data);  // Initialize filteredVegetables with all vegetables
-      })
-      .catch(error => {
-        console.error('Error fetching vegetables:', error);
-      });
-  }, []);
+        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + dailyEndpoint);
+        setDailyItem(dailyResponse.data);
 
-  const handleVegetableInputChange = (e) => {
+        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + itemsEndpoint);
+        setItems(itemsResponse.data);
+        setFilteredItems(itemsResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [gameChoice]);
+
+  const handleItemInputChange = (e) => {
     const value = e.target.value;
-    setVegetableInput(value);
-    setFilteredVegetables(
-      vegetables.filter(vegetable => vegetable.name.toLowerCase().includes(value.toLowerCase()))
+    setItemInput(value);
+    setFilteredItems(
+      items.filter(item => item.name.toLowerCase().includes(value.toLowerCase()))
     );
     setShowDropdown(true);  // Show dropdown when typing
   };
 
-  const handleVegetableSelect = (vegetableName) => {
-    setVegetableInput(vegetableName);
-    setSelectedVegetable(vegetableName);
+  const handleItemSelect = (itemName) => {
+    setItemInput(itemName);
+    setSelectedItem(itemName);
     setShowDropdown(false);  // Hide dropdown after selection
   };
 
@@ -79,20 +90,20 @@ const Game = () => {
       return;
     }
 
-    if (!selectedVegetable) {
-      setMessage('Please select a valid vegetable name.');
+    if (!selectedItem) {
+      setMessage('Please select a valid item name.');
       return;
     }
 
-    if (guesses.some(guess => guess.name === selectedVegetable)) {
+    if (guesses.some(guess => guess.name === selectedItem)) {
       setMessage('You have already made that guess.');
       return;
     }
 
-    const guessedVegetable = vegetables.find(v => v.name === selectedVegetable);
+    const guessedItem = items.find(v => v.name === selectedItem);
 
-    if (!guessedVegetable) {
-      setMessage('Vegetable not found.');
+    if (!guessedItem) {
+      setMessage('Item not found.');
       return;
     }
 
@@ -112,35 +123,35 @@ const Game = () => {
     };
 
     const feedback = {
-      name: guessedVegetable.name,
-      family: guessedVegetable.family,
-      origin: guessedVegetable.origin,
-      weight: parseInt(guessedVegetable.weight, 10),
-      shape: guessedVegetable.shape,
-      texture: guessedVegetable.texture,
-      taste: guessedVegetable.taste,
-      season: guessedVegetable.season,
+      name: guessedItem.name,
+      family: guessedItem.family,
+      origin: guessedItem.origin,
+      weight: parseInt(guessedItem.weight, 10),
+      shape: guessedItem.shape,
+      texture: guessedItem.texture,
+      taste: guessedItem.taste,
+      season: guessedItem.season,
       correct: {
-        name: guessedVegetable.name === dailyVegetable.name,
-        family: guessedVegetable.family === dailyVegetable.family,
-        origin: guessedVegetable.origin === dailyVegetable.origin
+        name: guessedItem.name === dailyItem.name,
+        family: guessedItem.family === dailyItem.family,
+        origin: guessedItem.origin === dailyItem.origin
           ? true
-          : dailyVegetable.origin === "Global"
+          : dailyItem.origin === "Global"
           ? "partial"
-          : isWithinSameContinent(guessedVegetable.origin, dailyVegetable.origin)
+          : isWithinSameContinent(guessedItem.origin, dailyItem.origin)
           ? "partial"
           : false,
-        weight: parseInt(guessedVegetable.weight, 10) === parseInt(dailyVegetable.weight, 10)
+        weight: parseInt(guessedItem.weight, 10) === parseInt(dailyItem.weight, 10)
           ? true 
-          : Math.abs(parseInt(guessedVegetable.weight, 10) - parseInt(dailyVegetable.weight, 10)) <= 10 
+          : Math.abs(parseInt(guessedItem.weight, 10) - parseInt(dailyItem.weight, 10)) <= 10 
           ? "partial" 
           : false,
-        shape: guessedVegetable.shape === dailyVegetable.shape,
-        texture: guessedVegetable.texture === dailyVegetable.texture,
-        taste: guessedVegetable.taste === dailyVegetable.taste,
-        season: guessedVegetable.season === dailyVegetable.season 
+        shape: guessedItem.shape === dailyItem.shape,
+        texture: guessedItem.texture === dailyItem.texture,
+        taste: guessedItem.taste === dailyItem.taste,
+        season: guessedItem.season === dailyItem.season 
           ? true 
-          : isAdjacentSeason(guessedVegetable.season, dailyVegetable.season) 
+          : isAdjacentSeason(guessedItem.season, dailyItem.season) 
           ? "partial" 
           : false
       }
@@ -150,23 +161,23 @@ const Game = () => {
     setGuesses(updatedGuesses);
 
     if (feedback.correct.name) {
-      setMessage(`Congratulations! You guessed the correct vegetable in ${updatedGuesses.length} guesses!`);
+      setMessage(`Congratulations! You guessed the correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} in ${updatedGuesses.length} guesses!`);
       setGameWon(true);
       confetti();  // Trigger confetti animation
     } else if (updatedGuesses.length >= MAX_GUESSES) {
-      setMessage(`You've run out of guesses! The correct vegetable was`);
-      setCorrectVegetable(` ${dailyVegetable.name}`);
+      setMessage(`You've run out of guesses! The correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} was`);
+      setCorrectItem(` ${dailyItem.name}`);
       setGameWon(true);
     } else {
-      setVegetableInput('');
-      setSelectedVegetable('');  // Clear the selectedVegetable state
-      setFilteredVegetables(vegetables);
+      setItemInput('');
+      setSelectedItem('');  // Clear the selectedItem state
+      setFilteredItems(items);
       setMessage('');
     }
   };
 
   const handleGiveUp = () => {
-    setMessage(`The correct vegetable was ${dailyVegetable.name}. Better luck next time!`);
+    setMessage(`The correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} was ${dailyItem.name}. Better luck next time!`);
     setGameWon(true);
   };
 
@@ -205,18 +216,23 @@ const Game = () => {
     return '';
   };
 
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className="App">
       <div className="background"></div>
       <div className="App-header">
-        <h1>Vegetabledle</h1>
-        <p>Guess today's vegetable.</p>
+        <button className="back-button" onClick={handleBackClick}>Back</button>
+        <h1>{gameChoice === 'fruitdle' ? 'Fruitdle' : 'Vegetabledle'}</h1>
+        <p>Guess today's {gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'}.</p>
         <div className="input-container">
           <label>
             Guess here: <input 
               type="text"
-              value={vegetableInput}
-              onChange={handleVegetableInputChange}
+              value={itemInput}
+              onChange={handleItemInputChange}
               onFocus={() => setShowDropdown(true)}
               onBlur={() => {
                 setTimeout(() => {
@@ -224,14 +240,14 @@ const Game = () => {
                 }, 100);
               }}
               ref={inputRef}
-              placeholder="e.g. Carrot"
+              placeholder={`e.g. ${gameChoice === 'fruitdle' ? 'Apple' : 'Carrot'}`}
               disabled={gameWon} // Disable input if game is won
             />
             {showDropdown && (
               <ul className="dropdown">
-                {filteredVegetables.map((vegetable) => (
-                  <li key={vegetable.name} onMouseDown={() => handleVegetableSelect(vegetable.name)}>
-                    {vegetable.name}
+                {filteredItems.map((item) => (
+                  <li key={item.name} onMouseDown={() => handleItemSelect(item.name)}>
+                    {item.name}
                   </li>
                 ))}
               </ul>
@@ -250,7 +266,7 @@ const Game = () => {
           Give Up (Hold)
           <div className="progress-bar" ref={giveUpRef}></div>
         </button>
-        <p>{message}<strong>{correctVegetable}</strong></p>
+        <p>{message}<strong>{correctItem}</strong></p>
         <div className="grid-container">
           <div className="grid-row grid-header">
             <div className="grid-item">Name</div>
@@ -265,7 +281,7 @@ const Game = () => {
           {guesses.map((g, index) => (
             <div key={index} className="grid-row">
               <div className={`grid-item ${g.correct.name ? 'correct' : 'incorrect'}`}>
-                {g.name}{!g.correct.name && renderArrowName(g.name, dailyVegetable.name)}
+                {g.name}{!g.correct.name && renderArrowName(g.name, dailyItem.name)}
               </div>
               <div className={`grid-item ${g.correct.family ? 'correct' : 'incorrect'}`}>
                 {g.family}
@@ -274,7 +290,7 @@ const Game = () => {
                 {g.origin}
               </div>
               <div className={`grid-item ${g.correct.weight === true ? 'correct' : g.correct.weight === "partial" ? 'partial' : 'incorrect'}`}>
-                {g.weight}{g.correct.weight !== true && !g.correct.weight && renderArrowNum(g.weight, dailyVegetable.weight)}
+                {g.weight}{g.correct.weight !== true && !g.correct.weight && renderArrowNum(g.weight, dailyItem.weight)}
               </div>
               <div className={`grid-item ${g.correct.shape ? 'correct' : 'incorrect'}`}>
                 {g.shape}
