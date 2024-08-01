@@ -3,7 +3,6 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
-const schedule = require('node-schedule');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 let vegetables = [];
-let dailyVegetable = null;
 
 // Read the CSV file and load the data
 fs.createReadStream(path.join(__dirname, 'vegetables.csv'))
@@ -22,7 +20,6 @@ fs.createReadStream(path.join(__dirname, 'vegetables.csv'))
   })
   .on('end', () => {
     console.log('CSV file successfully processed');
-    setDailyVegetable();
   });
 
 const getRandomVegetable = () => {
@@ -30,14 +27,26 @@ const getRandomVegetable = () => {
   return vegetable;
 };
 
-const setDailyVegetable = () => {
+let dailyVegetable = getRandomVegetable();
+
+// Function to reset the daily vegetable at midnight
+const resetDailyVegetable = () => {
   dailyVegetable = getRandomVegetable();
-  console.log(`New daily vegetable set: ${dailyVegetable.name}`);
+  console.log('New daily vegetable set:', dailyVegetable.name);
 };
 
-// Schedule the job to run at midnight AWST every day
-const timeZone = 'Australia/Perth';
-schedule.scheduleJob({ hour: 0, minute: 0, tz: timeZone }, setDailyVegetable);
+// Calculate the time until midnight
+const now = new Date();
+const midnight = new Date(now);
+midnight.setHours(24, 0, 0, 0);
+
+const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+// Set a timeout to reset the daily vegetable at midnight
+setTimeout(() => {
+  resetDailyVegetable();
+  setInterval(resetDailyVegetable, 24 * 60 * 60 * 1000);
+}, timeUntilMidnight);
 
 // Endpoint to get the daily vegetable
 app.get('/api/daily-vegetable', (req, res) => {
@@ -47,6 +56,14 @@ app.get('/api/daily-vegetable', (req, res) => {
 // Endpoint to get the list of vegetables
 app.get('/api/vegetables', (req, res) => {
   res.json(vegetables);
+});
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Catch all handler to serve the React frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
