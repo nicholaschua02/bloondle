@@ -115,7 +115,7 @@ const Game = () => {
       name: guessedVegetable.name,
       family: guessedVegetable.family,
       origin: guessedVegetable.origin,
-      weight: guessedVegetable.weight,
+      weight: parseInt(guessedVegetable.weight, 10),
       shape: guessedVegetable.shape,
       texture: guessedVegetable.texture,
       taste: guessedVegetable.taste,
@@ -130,9 +130,9 @@ const Game = () => {
           : isWithinSameContinent(guessedVegetable.origin, dailyVegetable.origin)
           ? "partial"
           : false,
-        weight: guessedVegetable.weight === dailyVegetable.weight 
+        weight: parseInt(guessedVegetable.weight, 10) === parseInt(dailyVegetable.weight, 10)
           ? true 
-          : Math.abs(guessedVegetable.weight - dailyVegetable.weight) <= 10 
+          : Math.abs(parseInt(guessedVegetable.weight, 10) - parseInt(dailyVegetable.weight, 10)) <= 10 
           ? "partial" 
           : false,
         shape: guessedVegetable.shape === dailyVegetable.shape,
