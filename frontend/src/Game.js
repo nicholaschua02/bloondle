@@ -28,18 +28,13 @@ const Game = () => {
   const giveUpTimeout = useRef(null);
 
   const continents = {
-    "Africa": ["North Africa", "Africa", "West Africa", "South Africa"],
-    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia", "South Asia"],
+    "Africa": ["North Africa", "Africa"],
+    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia"],
     "Europe": ["Italy", "Europe", "Mediterranean", "Greece", "Europe"],
     "North America": ["Central America", "North America", "Mexico", "North America"],
     "South America": ["South America", "Peru", "South America"],
     "Australia": ["Australia"],
-    "Antarctica": ["Antarctica"],
-    "Middle East": ["Middle East"],
-    "Near East": ["Near East"],
-    "Western Asia": ["Western Asia"],
-    "South Pacific": ["South Pacific"],
-    "Caribbean": ["Caribbean"]
+    "Antarctica": ["Antarctica"]
   };
 
   const seasons = ["Winter", "Spring", "Summer", "Autumn"];
@@ -50,10 +45,10 @@ const Game = () => {
         const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
         const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + dailyEndpoint);
+        const dailyResponse = await axios.get("http://localhost:3001" + dailyEndpoint);
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + itemsEndpoint);
+        const itemsResponse = await axios.get("http://localhost:3001" + itemsEndpoint);
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -216,7 +211,7 @@ const Game = () => {
     return '';
   };
 
-  const handleBackClick = () => {
+  const handleBackToMenu = () => {
     navigate('/');
   };
 
@@ -224,7 +219,7 @@ const Game = () => {
     <div className="App">
       <div className="background"></div>
       <div className="App-header">
-        <button className="back-button" onClick={handleBackClick}>Back</button>
+        <button className="back-button" onClick={handleBackToMenu}>Back</button>
         <h1>{gameChoice === 'fruitdle' ? 'Fruitdle' : 'Vegetabledle'}</h1>
         <p>Guess today's {gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'}.</p>
         <div className="input-container">
@@ -279,7 +274,7 @@ const Game = () => {
             <div className="grid-item">Season</div>
           </div>
           {guesses.map((g, index) => (
-            <div key={index} className="grid-row">
+            <div key={index} className="grid-row" style={{ '--delay': `${index * 0.1}s` }}>
               <div className={`grid-item ${g.correct.name ? 'correct' : 'incorrect'}`}>
                 {g.name}{!g.correct.name && renderArrowName(g.name, dailyItem.name)}
               </div>
@@ -310,6 +305,9 @@ const Game = () => {
       </div>
       <div className="credit">
         Background image credit: <a href="https://wall.alphacoders.com/big.php?i=1284104" target="_blank" rel="noopener noreferrer">Alpha Coders</a>
+      </div>
+      <div className="author-credit">
+        Created by Nicholas Chua
       </div>
     </div>
   );
