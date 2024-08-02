@@ -45,10 +45,10 @@ const Game = () => {
         const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
         const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + dailyEndpoint);
+        const dailyResponse = await axios.get("http://localhost:3001" + dailyEndpoint);
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + itemsEndpoint);
+        const itemsResponse = await axios.get("http://localhost:3001" + itemsEndpoint);
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -211,15 +211,13 @@ const Game = () => {
     return '';
   };
 
-  const handleBackToMenu = () => {
-    navigate('/');
-  };
-
   return (
     <div className="App">
+      <button className="back-button" onClick={() => navigate('/')}>
+        Back to Main Menu
+      </button>
       <div className="background"></div>
       <div className="App-header">
-        <button className="back-button" onClick={handleBackToMenu}>Back</button>
         <h1>{gameChoice === 'fruitdle' ? 'Fruitdle' : 'Vegetabledle'}</h1>
         <p>Guess today's {gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'}.</p>
         <div className="input-container">
@@ -307,7 +305,7 @@ const Game = () => {
         Background image credit: <a href="https://wall.alphacoders.com/big.php?i=1284104" target="_blank" rel="noopener noreferrer">Alpha Coders</a>
       </div>
       <div className="author-credit">
-        Created by Nicholas Chua
+        Author: Nicholas Chua
       </div>
     </div>
   );

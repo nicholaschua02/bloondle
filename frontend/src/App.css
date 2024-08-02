@@ -3,10 +3,10 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .App {
@@ -16,6 +16,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
+  max-width: 100%;
+  margin: 20px;
+  overflow: auto; /* Allow content to scroll */
 }
 
 .App-header {
@@ -40,7 +43,6 @@ h1 {
   margin: 0;
   color: #333;
 }
-
 
 p {
   font-size: 1.2em;
@@ -150,7 +152,12 @@ button.give-up:hover {
 }
 
 .grid-row {
-  display: contents;
+  display: contents; /* Ensure grid layout */
+  grid-template-columns: repeat(8, 1fr);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideFadeIn 0.5s forwards;
+  animation-delay: var(--delay);
 }
 
 @keyframes slideFadeIn {
@@ -161,10 +168,6 @@ button.give-up:hover {
 }
 
 .grid-item {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideFadeIn 0.5s forwards;
-  animation-delay: var(--delay);
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -311,6 +314,7 @@ button.give-up:hover {
   position: absolute;
   top: 20px;
   left: 20px;
+  z-index: 3; /* Ensure the button is above other elements */
 }
 
 .back-button:hover {
