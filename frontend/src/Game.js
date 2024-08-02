@@ -214,7 +214,7 @@ const Game = () => {
   return (
     <div className="App">
       <button className="back-button" onClick={() => navigate('/')}>
-        Back to Main Menu
+        Return
       </button>
       <div className="background"></div>
       <div className="App-header">
