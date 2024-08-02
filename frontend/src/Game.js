@@ -45,10 +45,10 @@ const Game = () => {
         const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
         const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-        const dailyResponse = await axios.get("http://localhost:3001" + dailyEndpoint);
+        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + dailyEndpoint);
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("http://localhost:3001" + itemsEndpoint);
+        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + itemsEndpoint);
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -305,7 +305,7 @@ const Game = () => {
         Background image credit: <a href="https://wall.alphacoders.com/big.php?i=1284104" target="_blank" rel="noopener noreferrer">Alpha Coders</a>
       </div>
       <div className="author-credit">
-        Author: Nicholas Chua
+        Author: Nicholas Chua <a href="https://github.com/nicholaschua02" target="_blank" rel="noopener noreferrer">Github</a>
       </div>
     </div>
   );
