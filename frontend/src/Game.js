@@ -11,7 +11,7 @@ const Game = () => {
   const navigate = useNavigate();
   const gameChoice = location.state?.choice;
 
-  const [dailyItem, setDailyItem] = useState(null);
+  const [dailyItem, setDailyItem] = useState({});
   const [items, setItems] = useState([]);
   const [itemInput, setItemInput] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
@@ -21,7 +21,7 @@ const Game = () => {
   const [message, setMessage] = useState('');
   const [correctItem, setCorrectItem] = useState('');
   const [gameWon, setGameWon] = useState(false);
-  const [giveUpActive, setGiveUpActive] = useState(false);  
+  const [giveUpActive, setGiveUpActive] = useState(false);
 
   const inputRef = useRef(null);
   const giveUpRef = useRef(null);
@@ -45,10 +45,10 @@ const Game = () => {
         const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
         const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
 
-        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + dailyEndpoint);
+        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + dailyEndpoint);
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/" + itemsEndpoint);
+        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + itemsEndpoint);
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -271,7 +271,7 @@ const Game = () => {
             <div className="grid-item">Taste</div>
             <div className="grid-item">Season</div>
           </div>
-          {guesses.map((g, index) => (
+          {Array.isArray(guesses) && guesses.map((g, index) => (
             <div key={index} className="grid-row" style={{ '--delay': `${index * 0.1}s` }}>
               <div className={`grid-item ${g.correct.name ? 'correct' : 'incorrect'}`}>
                 {g.name}{!g.correct.name && renderArrowName(g.name, dailyItem.name)}
