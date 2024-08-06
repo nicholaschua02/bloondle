@@ -6,7 +6,7 @@ const WelcomePage = () => {
     const navigate = useNavigate();
 
     const handleChoice = (choice) => {
-        navigate('/game', { state: { choice } });
+        navigate(`/${choice}`);
     };
 
     const text1 = 'Vegetabledle';
@@ -28,8 +28,8 @@ const WelcomePage = () => {
                             <span key={index} className="cycle-color">{char}</span>
                         ))}
                     </h1>
-                    <button onClick={() => handleChoice('vegetabledle')}>Play Vegetabledle</button>
-                    <button onClick={() => handleChoice('fruitdle')}>Play Fruitdle</button>
+                    <button className="game-button vegetabledle" onClick={() => handleChoice('vegetabledle')}>Play Vegetabledle</button>
+                    <button className="game-button fruitdle" onClick={() => handleChoice('fruitdle')}>Play Fruitdle</button>
                 </div>
             </div>
             <div className="credit">

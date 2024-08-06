@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import confetti from 'canvas-confetti';
 import './App.css';
 
 const MAX_GUESSES = 6;
 
-const Game = () => {
-  const location = useLocation();
+const Vegetabledle = () => {
   const navigate = useNavigate();
-  const gameChoice = location.state?.choice;
-
   const [dailyItem, setDailyItem] = useState({});
   const [items, setItems] = useState([]);
   const [itemInput, setItemInput] = useState('');
@@ -42,13 +39,10 @@ const Game = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dailyEndpoint = gameChoice === 'fruitdle' ? '/api/daily-fruit' : '/api/daily-vegetable';
-        const itemsEndpoint = gameChoice === 'fruitdle' ? '/api/fruits' : '/api/vegetables';
-
-        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + dailyEndpoint);
+        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/api/daily-vegetable");
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com" + itemsEndpoint);
+        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/api/vegetables");
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -57,7 +51,7 @@ const Game = () => {
     };
 
     fetchData();
-  }, [gameChoice]);
+  }, []);
 
   const handleItemInputChange = (e) => {
     const value = e.target.value;
@@ -156,11 +150,11 @@ const Game = () => {
     setGuesses(updatedGuesses);
 
     if (feedback.correct.name) {
-      setMessage(`Congratulations! You guessed the correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} in ${updatedGuesses.length} guesses!`);
+      setMessage(`Congratulations! You guessed the correct vegetable in ${updatedGuesses.length} guesses!`);
       setGameWon(true);
       confetti();  // Trigger confetti animation
     } else if (updatedGuesses.length >= MAX_GUESSES) {
-      setMessage(`You've run out of guesses! The correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} was`);
+      setMessage(`You've run out of guesses! The correct vegetable was`);
       setCorrectItem(` ${dailyItem.name}`);
       setGameWon(true);
     } else {
@@ -172,7 +166,7 @@ const Game = () => {
   };
 
   const handleGiveUp = () => {
-    setMessage(`The correct ${gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'} was ${dailyItem.name}. Better luck next time!`);
+    setMessage(`The correct vegetable was ${dailyItem.name}. Better luck next time!`);
     setGameWon(true);
   };
 
@@ -218,8 +212,8 @@ const Game = () => {
       </button>
       <div className="background"></div>
       <div className="App-header">
-        <h1>{gameChoice === 'fruitdle' ? 'Fruitdle' : 'Vegetabledle'}</h1>
-        <p>Guess today's {gameChoice === 'fruitdle' ? 'fruit' : 'vegetable'}.</p>
+        <h1>Vegetabledle</h1>
+        <p>Guess today's vegetable.</p>
         <div className="input-container">
           <label>
             Guess here: <input 
@@ -233,7 +227,7 @@ const Game = () => {
                 }, 100);
               }}
               ref={inputRef}
-              placeholder={`e.g. ${gameChoice === 'fruitdle' ? 'Apple' : 'Carrot'}`}
+              placeholder="e.g. Carrot"
               disabled={gameWon} // Disable input if game is won
             />
             {showDropdown && (
@@ -311,4 +305,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default Vegetabledle;

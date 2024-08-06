@@ -1,15 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Game from './Game';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import WelcomePage from './WelcomePage';
-import './App.css';
+import Vegetabledle from './Vegetabledle';
+import Fruitdle from './Fruitdle';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/vegetabledle" element={<Vegetabledle />} />
+        <Route path="/fruitdle" element={<Fruitdle />} />
       </Routes>
     </Router>
   );
