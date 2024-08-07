@@ -39,10 +39,10 @@ const Vegetabledle = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dailyResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/api/daily-vegetable");
+        const dailyResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/daily-vegetable");
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://vegetabledle-c0197ab79c78.herokuapp.com/api/vegetables");
+        const itemsResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/vegetables");
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {

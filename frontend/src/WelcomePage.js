@@ -9,9 +9,7 @@ const WelcomePage = () => {
         navigate(`/${choice}`);
     };
 
-    const text1 = 'Vegetabledle';
-    const text2 = 'and';
-    const text3 = 'Fruitdle!';
+    const text1 = 'Foodle!';
 
     return (
         <div className="App">
@@ -22,14 +20,12 @@ const WelcomePage = () => {
                     <h1>
                         {text1.split('').map((char, index) => (
                             <span key={index} className="cycle-color">{char}</span>
-                        ))} {text2.split('').map((char, index) => (
-                            <span key={index} className="cycle-color">{char}</span>
-                        ))} {text3.split('').map((char, index) => (
-                            <span key={index} className="cycle-color">{char}</span>
                         ))}
                     </h1>
-                    <button className="game-button vegetabledle" onClick={() => handleChoice('vegetabledle')}>Play Vegetabledle</button>
-                    <button className="game-button fruitdle" onClick={() => handleChoice('fruitdle')}>Play Fruitdle</button>
+                    <div class="page-links">
+                        <button className="game-button vegetabledle" onClick={() => handleChoice('vegetabledle')}>Play Vegetabledle</button>
+                        <button className="game-button fruitdle" onClick={() => handleChoice('fruitdle')}>Play Fruitdle</button>
+                    </div>
                 </div>
             </div>
             <div className="credit">
