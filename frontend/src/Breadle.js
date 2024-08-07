@@ -6,7 +6,7 @@ import './App.css';
 
 const MAX_GUESSES = 6;
 
-const Fruitdle = () => {
+const Breadle = () => {
   const navigate = useNavigate();
   const [dailyItem, setDailyItem] = useState({});
   const [items, setItems] = useState([]);
@@ -59,17 +59,14 @@ const Fruitdle = () => {
     "Australia": ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Vanuatu", "Kiribati", "Micronesia", "Palau", "Nauru", "Tuvalu", "Marshall Islands"],
     "Antarctica": ["Antarctica"]
   };
-  
-
-  const seasons = ["Winter", "Spring", "Summer", "Autumn"];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dailyResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/daily-fruit");
+        const dailyResponse = await axios.get("http://localhost:3001/api/daily-bread");
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/fruits");
+        const itemsResponse = await axios.get("http://localhost:3001/api/breads");
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
@@ -132,44 +129,24 @@ const Fruitdle = () => {
       return false;
     };
 
-    const isAdjacentSeason = (season1, season2) => {
-      const index1 = seasons.indexOf(season1);
-      const index2 = seasons.indexOf(season2);
-      return Math.abs(index1 - index2) === 1 || Math.abs(index1 - index2) === (seasons.length - 1);
-    };
-
     const feedback = {
       name: guessedItem.name,
-      family: guessedItem.family,
       origin: guessedItem.origin,
-      weight: parseInt(guessedItem.weight, 10),
+      mainIngredient: guessedItem.mainIngredient,
+      crustTexture: guessedItem.crustTexture,
+      crumbTexture: guessedItem.crumbTexture,
       shape: guessedItem.shape,
-      texture: guessedItem.texture,
       taste: guessedItem.taste,
-      season: guessedItem.season,
+      commonUse: guessedItem.commonUse,
       correct: {
         name: guessedItem.name === dailyItem.name,
-        family: guessedItem.family === dailyItem.family,
-        origin: guessedItem.origin === dailyItem.origin
-          ? true
-          : dailyItem.origin === "Global"
-          ? "partial"
-          : isWithinSameContinent(guessedItem.origin, dailyItem.origin)
-          ? "partial"
-          : false,
-        weight: parseInt(guessedItem.weight, 10) === parseInt(dailyItem.weight, 10)
-          ? true 
-          : Math.abs(parseInt(guessedItem.weight, 10) - parseInt(dailyItem.weight, 10)) <= 10 
-          ? "partial" 
-          : false,
+        origin: guessedItem.origin === dailyItem.origin,
+        mainIngredient: guessedItem.mainIngredient === dailyItem.mainIngredient,
+        crustTexture: guessedItem.crustTexture === dailyItem.crustTexture,
+        crumbTexture: guessedItem.crumbTexture === dailyItem.crumbTexture,
         shape: guessedItem.shape === dailyItem.shape,
-        texture: guessedItem.texture === dailyItem.texture,
         taste: guessedItem.taste === dailyItem.taste,
-        season: guessedItem.season === dailyItem.season 
-          ? true 
-          : isAdjacentSeason(guessedItem.season, dailyItem.season) 
-          ? "partial" 
-          : false
+        commonUse: guessedItem.commonUse === dailyItem.commonUse
       }
     };
 
@@ -177,11 +154,11 @@ const Fruitdle = () => {
     setGuesses(updatedGuesses);
 
     if (feedback.correct.name) {
-      setMessage(`Congratulations! You guessed the correct fruit in ${updatedGuesses.length} guesses!`);
+      setMessage(`Congratulations! You guessed the correct bread in ${updatedGuesses.length} guesses!`);
       setGameWon(true);
       confetti();  // Trigger confetti animation
     } else if (updatedGuesses.length >= MAX_GUESSES) {
-      setMessage(`You've run out of guesses! The correct fruit was`);
+      setMessage(`You've run out of guesses! The correct bread was`);
       setCorrectItem(` ${dailyItem.name}`);
       setGameWon(true);
     } else {
@@ -193,7 +170,7 @@ const Fruitdle = () => {
   };
 
   const handleGiveUp = () => {
-    setMessage(`The correct fruit was ${dailyItem.name}. Better luck next time!`);
+    setMessage(`The correct bread was ${dailyItem.name}. Better luck next time!`);
     setGameWon(true);
   };
 
@@ -239,8 +216,8 @@ const Fruitdle = () => {
       </button>
       <div className="background"></div>
       <div className="App-header">
-        <h1>Fruitdle</h1>
-        <p>Guess today's fruit.</p>
+        <h1>Breadle</h1>
+        <p>Guess today's bread.</p>
         <div className="input-container">
           <label>
             Guess here: <input 
@@ -254,7 +231,7 @@ const Fruitdle = () => {
                 }, 100);
               }}
               ref={inputRef}
-              placeholder="e.g. Apple"
+              placeholder="e.g. Baguette"
               disabled={gameWon} // Disable input if game is won
             />
             {showDropdown && (
@@ -284,39 +261,39 @@ const Fruitdle = () => {
         <div className="grid-container">
           <div className="grid-row grid-header">
             <div className="grid-item">Name</div>
-            <div className="grid-item">Family</div>
             <div className="grid-item">Origin</div>
-            <div className="grid-item">Weight (g)</div>
+            <div className="grid-item">Main Ingredient</div>
+            <div className="grid-item">Crust Texture</div>
+            <div className="grid-item">Crumb Texture</div>
             <div className="grid-item">Shape</div>
-            <div className="grid-item">Texture</div>
             <div className="grid-item">Taste</div>
-            <div className="grid-item">Season</div>
+            <div className="grid-item">Common Use</div>
           </div>
           {Array.isArray(guesses) && guesses.map((g, index) => (
             <div key={index} className="grid-row" style={{ '--delay': `${index * 0.1}s` }}>
               <div className={`grid-item ${g.correct.name ? 'correct' : 'incorrect'}`}>
                 {g.name}{!g.correct.name && renderArrowName(g.name, dailyItem.name)}
               </div>
-              <div className={`grid-item ${g.correct.family ? 'correct' : 'incorrect'}`}>
-                {g.family}
-              </div>
-              <div className={`grid-item ${g.correct.origin === true ? 'correct' : g.correct.origin === "partial" ? 'partial' : 'incorrect'}`}>
+              <div className={`grid-item ${g.correct.origin ? 'correct' : 'incorrect'}`}>
                 {g.origin}
               </div>
-              <div className={`grid-item ${g.correct.weight === true ? 'correct' : g.correct.weight === "partial" ? 'partial' : 'incorrect'}`}>
-                {g.weight}{g.correct.weight !== true && !g.correct.weight && renderArrowNum(g.weight, dailyItem.weight)}
+              <div className={`grid-item ${g.correct.mainIngredient ? 'correct' : 'incorrect'}`}>
+                {g.mainIngredient}
+              </div>
+              <div className={`grid-item ${g.correct.crustTexture ? 'correct' : 'incorrect'}`}>
+                {g.crustTexture}
+              </div>
+              <div className={`grid-item ${g.correct.crumbTexture ? 'correct' : 'incorrect'}`}>
+                {g.crumbTexture}
               </div>
               <div className={`grid-item ${g.correct.shape ? 'correct' : 'incorrect'}`}>
                 {g.shape}
               </div>
-              <div className={`grid-item ${g.correct.texture ? 'correct' : 'incorrect'}`}>
-                {g.texture}
-              </div>
               <div className={`grid-item ${g.correct.taste ? 'correct' : 'incorrect'}`}>
                 {g.taste}
               </div>
-              <div className={`grid-item ${g.correct.season === true ? 'correct' : g.correct.season === "partial" ? 'partial' : 'incorrect'}`}>
-                {g.season}
+              <div className={`grid-item ${g.correct.commonUse ? 'correct' : 'incorrect'}`}>
+                {g.commonUse}
               </div>
             </div>
           ))}
@@ -332,4 +309,4 @@ const Fruitdle = () => {
   );
 };
 
-export default Fruitdle;
+export default Breadle;

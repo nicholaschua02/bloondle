@@ -13,8 +13,10 @@ app.use(express.json());
 
 let vegetables = [];
 let fruits = [];
+let breads = [];
 let dailyVegetable = null;
 let dailyFruit = null;
+let dailyBread = null;
 
 // Read the CSV files and load the data
 fs.createReadStream(path.join(__dirname, 'vegetables.csv'))
@@ -37,6 +39,16 @@ fs.createReadStream(path.join(__dirname, 'fruits.csv'))
     setDailyFruit();
   });
 
+fs.createReadStream(path.join(__dirname, 'breads.csv'))
+  .pipe(csv())
+  .on('data', (row) => {
+    breads.push(row);
+  })
+  .on('end', () => {
+    console.log('Breads CSV file successfully processed');
+    setDailyBread();
+  });
+
 const getRandomVegetable = () => {
   const vegetable = vegetables[Math.floor(Math.random() * vegetables.length)];
   return vegetable;
@@ -45,6 +57,11 @@ const getRandomVegetable = () => {
 const getRandomFruit = () => {
   const fruit = fruits[Math.floor(Math.random() * fruits.length)];
   return fruit;
+};
+
+const getRandomBread = () => {
+  const bread = breads[Math.floor(Math.random() * breads.length)];
+  return bread;
 };
 
 const setDailyVegetable = () => {
@@ -57,11 +74,17 @@ const setDailyFruit = () => {
   console.log(`New daily fruit set: ${dailyFruit.name}`);
 };
 
+const setDailyBread = () => {
+  dailyBread = getRandomBread();
+  console.log(`New daily bread set: ${dailyBread.name}`);
+};
+
 // Schedule the job to run at midnight AWST every day
 const timeZone = 'Australia/Perth';
 schedule.scheduleJob({ hour: 0, minute: 0, tz: timeZone }, () => {
   setDailyVegetable();
   setDailyFruit();
+  setDailyBread();
 });
 
 // Endpoint to get the daily vegetable
@@ -74,6 +97,11 @@ app.get('/api/daily-fruit', (req, res) => {
   res.json(dailyFruit);
 });
 
+// Endpoint to get the daily bread
+app.get('/api/daily-bread', (req, res) => {
+  res.json(dailyBread);
+});
+
 // Endpoint to get the list of vegetables
 app.get('/api/vegetables', (req, res) => {
   res.json(vegetables);
@@ -82,6 +110,11 @@ app.get('/api/vegetables', (req, res) => {
 // Endpoint to get the list of fruits
 app.get('/api/fruits', (req, res) => {
   res.json(fruits);
+});
+
+// Endpoint to get the list of breads
+app.get('/api/breads', (req, res) => {
+  res.json(breads);
 });
 
 // Serve static files from the React frontend app

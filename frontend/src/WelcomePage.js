@@ -22,9 +22,10 @@ const WelcomePage = () => {
                             <span key={index} className="cycle-color">{char}</span>
                         ))}
                     </h1>
-                    <div class="page-links">
+                    <div className="page-links">
                         <button className="game-button vegetabledle" onClick={() => handleChoice('vegetabledle')}>Play Vegetabledle</button>
                         <button className="game-button fruitdle" onClick={() => handleChoice('fruitdle')}>Play Fruitdle</button>
+                        <button className="game-button breadle" onClick={() => handleChoice('breadle')}>Play Breadle</button>
                     </div>
                 </div>
             </div>

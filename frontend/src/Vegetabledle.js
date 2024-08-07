@@ -24,15 +24,42 @@ const Vegetabledle = () => {
   const giveUpRef = useRef(null);
   const giveUpTimeout = useRef(null);
 
-  const continents = {
-    "Africa": ["North Africa", "Africa"],
-    "Asia": ["China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia"],
-    "Europe": ["Italy", "Europe", "Mediterranean", "Greece", "Europe"],
-    "North America": ["Central America", "North America", "Mexico", "North America"],
-    "South America": ["South America", "Peru", "South America"],
-    "Australia": ["Australia"],
-    "Antarctica": ["Antarctica"]
-  };
+const continents = {
+  "Africa": [
+    "North Africa", "Africa", "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon",
+    "Central African Republic", "Chad", "Comoros", "Congo", "Democratic Republic of the Congo", "Djibouti", "Egypt", "Equatorial Guinea",
+    "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Ivory Coast", "Kenya", "Lesotho", "Liberia",
+    "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Rwanda",
+    "Sao Tome and Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo",
+    "Tunisia", "Uganda", "Zambia", "Zimbabwe"
+  ],
+  "Asia": [
+    "China", "India", "Southeast Asia", "Persia", "Central Asia", "East Asia", "Japan", "Asia", "Afghanistan", "Armenia", "Azerbaijan",
+    "Bahrain", "Bangladesh", "Bhutan", "Brunei", "Cambodia", "Georgia", "Indonesia", "Iran", "Iraq", "Israel", "Jordan", "Kazakhstan",
+    "Kuwait", "Kyrgyzstan", "Laos", "Lebanon", "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "North Korea", "Oman", "Pakistan",
+    "Palestine", "Philippines", "Qatar", "Saudi Arabia", "Singapore", "South Korea", "Sri Lanka", "Syria", "Tajikistan", "Thailand", "Timor-Leste",
+    "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Vietnam", "Yemen"
+  ],
+  "Europe": [
+    "Italy", "Europe", "Mediterranean", "Greece", "France", "Germany", "Spain", "United Kingdom", "Russia", "Netherlands", "Belgium", "Sweden",
+    "Switzerland", "Austria", "Norway", "Denmark", "Poland", "Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus", "Bosnia and Herzegovina",
+    "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Estonia", "Finland", "Georgia", "Hungary", "Iceland", "Ireland", "Kosovo", "Latvia",
+    "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "North Macedonia", "Portugal", "Romania", "San Marino",
+    "Serbia", "Slovakia", "Slovenia", "Ukraine", "Vatican City"
+  ],
+  "North America": [
+    "Central America", "North America", "Mexico", "United States", "Canada", "Antigua and Barbuda", "Bahamas", "Barbados", "Belize", "Costa Rica",
+    "Cuba", "Dominica", "Dominican Republic", "El Salvador", "Grenada", "Guatemala", "Haiti", "Honduras", "Jamaica", "Nicaragua", "Panama",
+    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Trinidad and Tobago"
+  ],
+  "South America": [
+    "South America", "Peru", "Brazil", "Argentina", "Chile", "Colombia", "Venezuela", "Ecuador", "Bolivia", "Paraguay", "Uruguay", "Guyana",
+    "Suriname"
+  ],
+  "Australia": ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Solomon Islands", "Tonga", "Vanuatu", "Kiribati", "Micronesia", "Palau", "Nauru", "Tuvalu", "Marshall Islands"],
+  "Antarctica": ["Antarctica"]
+};
+
 
   const seasons = ["Winter", "Spring", "Summer", "Autumn"];
 

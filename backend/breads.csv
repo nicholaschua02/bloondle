@@ -1,0 +1,41 @@
+name,origin,mainIngredient,crustTexture,crumbTexture,shape,taste,commonUse
+Anadama Bread,USA,Corn,Soft,Moist,Loaf,Savory,Toast
+Arepa,Venezuela,Corn,Soft,Chewy,Round,Savory,Flatbreads
+Bagel,Poland,Wheat,Crispy,Chewy,Round,Savory,Sandwiches
+Baguette,France,Wheat,Crispy,Airy,Long,Savory,Sandwiches
+Banana Bread,USA,Wheat,Soft,Moist,Loaf,Sweet,Desserts
+Barmbrack,Ireland,Wheat,Soft,Dense,Loaf,Sweet,Desserts
+Brioche,France,Wheat,Soft,Moist,Loaf,Sweet,Toast
+Challah,Israel,Wheat,Soft,Moist,Loaf,Sweet,Sandwiches
+Chapati,India,Wheat,Soft,Chewy,Flat,Savory,Flatbreads
+Ciabatta,Italy,Wheat,Crispy,Airy,Loaf,Savory,Sandwiches
+Cornbread,USA,Corn,Soft,Moist,Loaf,Sweet,Soups
+Crumpet,UK,Wheat,Soft,Spongy,Round,Savory,Toast
+Cuban Bread,Cuba,Wheat,Crispy,Airy,Loaf,Savory,Sandwiches
+English Muffin,UK,Wheat,Crispy,Chewy,Round,Savory,Toast
+Focaccia,Italy,Wheat,Soft,Airy,Flat,Savory,Sandwiches
+Fougasse,France,Wheat,Crispy,Chewy,Flat,Savory,Soups
+Hokkaido Milk Bread,Japan,Wheat,Soft,Moist,Loaf,Sweet,Toast
+Injera,Ethiopia,Teff,Soft,Spongy,Flat,Savory,Flatbreads
+Kaiser Roll,Austria,Wheat,Crispy,Chewy,Round,Savory,Sandwiches
+Lahoh,Somalia,Teff,Soft,Spongy,Flat,Savory,Flatbreads
+Lavash,Armenia,Wheat,Soft,Chewy,Flat,Savory,Wraps
+Lefse,Norway,Potato,Soft,Chewy,Flat,Sweet,Desserts
+Matzo,Israel,Wheat,Crispy,Crumbly,Flat,Savory,Flatbreads
+Miche,France,Wheat,Crispy,Chewy,Round,Savory,Soups
+Multigrain Bread,Various,Wheat,Soft,Dense,Loaf,Savory,Sandwiches
+Naan,India,Wheat,Soft,Chewy,Flat,Savory,Flatbreads
+Pain D'epices,France,Rye,Soft,Dense,Loaf,Sweet,Desserts
+Pain de Campagne,France,Wheat,Crispy,Chewy,Round,Savory,Soups
+Panettone,Italy,Wheat,Soft,Airy,Round,Sweet,Desserts
+Pane Carasau,Italy,Wheat,Crispy,Crumbly,Flat,Savory,Flatbreads
+Pane Toscano,Italy,Wheat,Crispy,Chewy,Loaf,Savory,Soups
+Pretzel,Germany,Wheat,Crispy,Chewy,Knot,Savory,Snacks
+Pita,Greece,Wheat,Soft,Chewy,Round,Savory,Sandwiches
+Pumpernickel,Germany,Rye,Soft,Dense,Loaf,Savory,Soups
+Rye Bread,Germany,Rye,Crispy,Dense,Loaf,Savory,Soups
+Soda Bread,Ireland,Wheat,Soft,Dense,Loaf,Savory,Toast
+Sourdough,Egypt,Wheat,Crispy,Chewy,Round,Tangy,Toast
+Stollen,Germany,Wheat,Soft,Dense,Loaf,Sweet,Desserts
+Tortilla,Mexico,Corn,Soft,Chewy,Flat,Savory,Tacos
+Zopf,Switzerland,Wheat,Soft,Moist,Loaf,Sweet,Toast

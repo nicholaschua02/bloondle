@@ -19,7 +19,6 @@ body {
   max-width: 100%;
   margin: 20px;
   overflow: auto;
-  /* Allow content to scroll */
 }
 
 .App-header {
@@ -73,13 +72,11 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 button.submit {
   background-color: #4CAF50;
-  transition: background-color 0.3s, transform 0.3s;
-
 }
 
 button.submit:hover {
@@ -91,8 +88,6 @@ button.give-up {
   background-color: #f44336;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s, transform 0.3s;
-
 }
 
 button.give-up .progress-bar {
@@ -160,7 +155,6 @@ button.give-up:hover {
 
 .grid-row {
   display: contents;
-  /* Ensure grid layout */
   grid-template-columns: repeat(8, 1fr);
   opacity: 0;
   transform: translateY(20px);
@@ -301,24 +295,31 @@ button.give-up:hover {
 }
 
 .welcome-page button:hover {
-  background-color: #555;
   transform: translateY(-3px);
 }
 
-.welcome-page button:first-of-type {
+.welcome-page button.vegetabledle {
   background-color: #3f8d49;
 }
 
-.welcome-page button:first-of-type:hover {
+.welcome-page button.vegetabledle:hover {
   background-color: #337738;
 }
 
-.welcome-page button:last-of-type {
+.welcome-page button.fruitdle {
   background-color: #3659f4;
 }
 
-.welcome-page button:last-of-type:hover {
+.welcome-page button.fruitdle:hover {
   background-color: #3541e5;
+}
+
+.welcome-page button.breadle {
+  background-color: #ff9800;
+}
+
+.welcome-page button.breadle:hover {
+  background-color: #e68900;
 }
 
 @keyframes cycleColors {
@@ -404,34 +405,7 @@ button.give-up:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Optional: Center align items horizontally */
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .back-button {
   background-color: #2196F3;
@@ -447,16 +421,12 @@ button.give-up:hover {
   top: 20px;
   left: 20px;
   z-index: 3;
-  /* Ensure the button is above other elements */
-
 }
 
 .back-button:hover {
   background-color: #1976D2;
   transform: translateY(-3px);
-
 }
-
 
 .back-button:focus {
   outline: none;
