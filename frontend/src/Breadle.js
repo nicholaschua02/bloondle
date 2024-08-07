@@ -63,10 +63,10 @@ const Breadle = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const dailyResponse = await axios.get("http://localhost:3001/api/daily-bread");
+        const dailyResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/daily-bread");
         setDailyItem(dailyResponse.data);
 
-        const itemsResponse = await axios.get("http://localhost:3001/api/breads");
+        const itemsResponse = await axios.get("https://foodle-edb3db9dd381.herokuapp.com/api/breads");
         setItems(itemsResponse.data);
         setFilteredItems(itemsResponse.data);
       } catch (error) {
